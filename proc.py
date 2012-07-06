@@ -1,7 +1,6 @@
 """
 proc.py - Functions relating to processes 
 """
-import gdb
 
 from list_util import KIterator
 from kernel import *

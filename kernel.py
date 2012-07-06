@@ -1,7 +1,6 @@
 """
 kernel.py 
 """
-import gdb
 
 #
 # MACRO DEFINES - Export from kernel build?

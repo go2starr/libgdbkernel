@@ -1,7 +1,6 @@
 """
 log.py - Functions relating to kernel log buffers
 """
-import gdb
 
 def dmesg(tail=10):
     __log_buf = gdb.parse_and_eval('__log_buf').address
@@ -11,7 +10,7 @@ def dmesg(tail=10):
     for i in range(log_end):
         if not tail:
             break
-        c = gdb.execute('printf "%c", ((char *)({}))[{}]'.format(
+        c = gdb.execute('printf "%c", ((char *)({0}))[{1}]'.format(
                 __log_buf, log_end - 1 - i), True, True)[0]
         line.insert(0, c)
         if c == '\n':

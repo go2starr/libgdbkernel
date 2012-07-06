@@ -1,7 +1,6 @@
 """
 list_util.py - list manipulation utilities for debugging the kernel
 """
-import gdb
 
 def _offsetof(type_, member):
     s = '(size_t) &((%(type)s *)0)->%(member)s' % \

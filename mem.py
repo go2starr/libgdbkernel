@@ -1,7 +1,6 @@
 """
 mem.py - Functions relating to kernel memory
 """
-import gdb
 
 from kernel import *
 from list_util import KIterator
@@ -17,7 +16,7 @@ total_swap_pages = gdb.parse_and_eval('total_swap_pages')
 total_swapcache_pages = gdb.parse_and_eval('swapper_space.nrpages')
 
 def _global_page_state(key):
-    return gdb.parse_and_eval('vm_stat[{}].counter'.format(key))
+    return gdb.parse_and_eval('vm_stat[{0}].counter'.format(key))
 
 def _totalram():
     return int(gdb.parse_and_eval('totalram_pages'))
@@ -53,7 +52,7 @@ def _memunit():
 def _swapinfo():
     nr_to_be_used = 0
     for type_ in range(nr_swapfiles):
-        si = gdb.parse_and_eval("swap_info[{}]".format(type_))
+        si = gdb.parse_and_eval("swap_info[{0}]".format(type_))
         if si['flags'] & SWP_USED and si['flags'] & SWP_WRITEOK:
             nr_to_be_used += si['inuse_pages']
     print nr_to_be_used

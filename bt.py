@@ -4,11 +4,13 @@ bt.py - Functions relating to the backtrace and stack
 import gdb
 import re
 
-def backtrace():
+def backtrace(count=0):
     bt = []
     bt_tmpl = re.compile('#\d+  (?P<entry>.*)')
+    if count == 0:
+        count = ""
 
-    backtrace = gdb.execute('bt', True, True).strip().split('\n')
+    backtrace = gdb.execute("bt {}".format(str(count)), True, True).strip().split('\n')
 
     for line in backtrace:
         m = bt_tmpl.search(line)
@@ -17,5 +19,5 @@ def backtrace():
     return bt
 
 def backtrace_top():
-    return backtrace()[0]
+    return backtrace(1)
 

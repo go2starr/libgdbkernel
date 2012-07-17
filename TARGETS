@@ -1,0 +1,8 @@
+python_library (
+    name = "libgdbkernel",
+    srcs = [
+        "kernel.py",
+        "gdb_util.py",
+        "list_util.py",
+        ],
+    )

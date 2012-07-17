@@ -2,14 +2,13 @@
 kernel.py 
 """
 from list_util import KIterator
-
+import re
 
 #
-# MACRO DEFINES - Export from kernel build?
+# MACRO DEFINES - x86 specific for now!
 #
 PAGE_SHIFT = 12
 PAGE_SIZE = 1 << PAGE_SHIFT
-
 
 ################################################################################
 #

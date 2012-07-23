@@ -1,7 +1,7 @@
 #
 # gdb_util.py - A collection of py/gdb utilities
 #
-
+import gdb
 import re
 
 # Filter function pointers with complex return value or arguments by paren
@@ -38,7 +38,7 @@ def is_struct_type(type_):
 def get_array_length(type_):
     """ Returns the array length given the type.  0 if not an array """
     m = re.search('\[(\d+)\]', type_)
-    if m: 
+    if m:
         return int(m.group(1))
     else:
         return 0
@@ -74,4 +74,4 @@ def identifier_to_dict(identifier):
     """Given an identifier, returns a dictionary of the identifier's fields"""
     struct = gdb.parse_and_eval(identifier)
     return to_dict(struct)
-    
+

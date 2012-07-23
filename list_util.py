@@ -1,6 +1,7 @@
 """
 list_util.py - list manipulation utilities for debugging the kernel
 """
+import gdb
 
 def _offsetof(type_, member):
     s = '(size_t) &((%(type)s *)0)->%(member)s' % \
@@ -33,9 +34,9 @@ class KIterator(object):
         self.type_ = type_
         self.member = member
         self.pos = gdb.parse_and_eval(list_)
-        
+
     def next(self):
-        self.pos = gdb.parse_and_eval('*((struct list_head *)' + 
+        self.pos = gdb.parse_and_eval('*((struct list_head *)' +
                                       str(self.pos['next']) + ')')
 
         if self.pos.address == self.list_.address:
@@ -44,5 +45,5 @@ class KIterator(object):
         return _list_entry(self.pos.address, self.type_, self.member)
 
     def __iter__(self):
-        return self    
+        return self
 

@@ -1,8 +1,11 @@
 """
-kernel.py 
+kernel.py - A collection of gdb utilities for analyzing kernel core dumps
 """
-from list_util import KIterator
+import gdb
 import re
+
+from list_util import KIterator
+
 
 #
 # MACRO DEFINES - x86 specific for now!
@@ -157,7 +160,7 @@ def unamem():
     return __uname('machine')
 def unamea():
     return '{0} {1} {2} {3} {4}'.format(unames(), unamen(), unamer(), unamev(), unamem())
-    
+
 
 ################################################################################
 #

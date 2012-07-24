@@ -1,9 +1,9 @@
 python_library (
     name = "libgdbkernel",
     srcs = [
-        "__init__.py",
         "kernel.py",
         "gdb_util.py",
         "list_util.py",
         ],
+    base_module = 'libgdbkernel',
     )

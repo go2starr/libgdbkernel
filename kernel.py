@@ -40,7 +40,8 @@ def backtrace_top():
 ################################################################################
 def dmesg(tail=10):
     __log_buf = gdb.parse_and_eval('__log_buf').address
-    log_end = gdb.parse_and_eval('log_end')
+    log_buf_len = gdb.parse_and_eval('log_buf_len')
+    log_end = gdb.parse_and_eval('log_end') & (log_buf_len-1)
     dmesg = []
     line = []
     for i in range(log_end):
